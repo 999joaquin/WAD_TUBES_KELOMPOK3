@@ -1,4 +1,7 @@
-<?php
+@extends('layout.app')
+
+@sections(content')
+
 @include('rekammedis.index')
 
 <div class="box">
