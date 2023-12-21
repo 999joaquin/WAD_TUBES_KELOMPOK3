@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\rekmed;
+use App\Models\Rekammedis;
 use Illuminate\Http\Request;
 
-class rekammedisController extends Controller
+class RekammedisController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-     return view ('rekammedis.index');
+        $rekammedis = Rekammedis::all();
+        return view('rekammedis.index', compact('rekammedis'));
     }
 
     /**
@@ -20,7 +21,7 @@ class rekammedisController extends Controller
      */
     public function create()
     {
-        //
+        return view('rekammedis.create');
     }
 
     /**
@@ -28,38 +29,84 @@ class rekammedisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi input
+        $request->validate([
+            'namaPasien' => 'required',
+            'umur' => 'required|numeric',
+            'tglRekamMedis' => 'required|date',
+            'diagnosis' => 'required',
+            'catatan' => 'required'
+        ]);
+
+        // Simpan rekam medis ke database
+        Rekammedis::create([
+            'namaPasien' => $request->namaPasien,
+            'umur' => $request->umur,
+            'tglRekamMedis' => $request->tglRekamMedis,
+            'diagnosis' => $request->diagnosis,
+            'catatan' => $request->catatan
+        ]);
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('rekammedis.index')->with('success', 'Rekam medis berhasil disimpan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(rekmed $rekmed)
+
+    public function show($id)
     {
-        //
+        $rekammedis = Rekammedis::findOrFail($id);
+        return view('rekammedis.show', compact('rekammedis'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(rekmed $rekmed)
+    public function edit($id)
     {
-        //
+        $patient = Rekammedis::findOrFail($id);
+        return view('rekammedis.edit', compact('rekammedis'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, rekmed $rekmed)
+    public function update(Request $request, Rekammedis $telyucare_db)
     {
-        //
+        // Validasi input
+        $telyucare_db->validate([
+            'namaPasien' => 'required',
+            'umur' => 'required|numeric',
+            'tglRekamMedis' => 'required|date',
+            'diagnosis' => 'required',
+            'catatan' => 'required',
+        ]);
+
+        // Update rekam medis di database
+        $telyucare_db->update([
+            'namaPasien' => $request->namaPasien,
+            'umur' => $request->umur,
+            'tglRekamMedis' => $request->tglRekamMedis,
+            'diagnosis' => $request->diagnosis,
+            'catatan' => $request->catatan,
+        ]);
+
+        // Redirect dengan pesan sukses
+        Rekammedis::whereId($id)->update($request);
+        return redirect()->route('rekammedis.index')->with('success', 'Rekam medis berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(rekmed $rekmed)
+    public function destroy(Rekammedis $telyucare_db)
     {
-        //
+        // Hapus rekam medis dari database
+        $telyucare_db->delete();
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('rekammedis.index')->with('success', 'Rekam medis berhasil dihapus');
     }
 }

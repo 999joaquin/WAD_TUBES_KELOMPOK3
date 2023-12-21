@@ -22,6 +22,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('patients.index') }}">Patients</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('rekammedis.index') }}">Medical record</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dropdown

@@ -18,3 +18,4 @@ Route::get('/', function () {
 })->name('home');
 
 Route::resource('patients', 'PatientController');
+Route::resource('rekammedis', 'rekammedisController');
