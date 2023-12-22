@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\rekmed;
 use Illuminate\Http\Request;
 
-class homeController extends Controller
+class rekammedisController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('home.index');
+     return view ('rekammedis.index');
     }
 
     /**
@@ -33,7 +34,7 @@ class homeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(rekmed $rekmed)
     {
         //
     }
@@ -41,7 +42,7 @@ class homeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(rekmed $rekmed)
     {
         //
     }
@@ -49,7 +50,7 @@ class homeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, rekmed $rekmed)
     {
         //
     }
@@ -57,7 +58,7 @@ class homeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(rekmed $rekmed)
     {
         //
     }
