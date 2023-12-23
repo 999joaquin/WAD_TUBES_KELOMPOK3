@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container mt-4">
-        <h2>Patients</h2>
-        <a href="{{ route('patients.create') }}" class="btn btn-primary mb-3">Add Patient</a>
+        <h2>Pasien</h2>
+        <a href="{{ route('patients.create') }}" class="btn btn-primary mb-3">Tambah pasien</a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -20,9 +20,15 @@
                         <td>{{ $patient->name }}</td>
                         <td>{{ $patient->email }}</td>
                         <td>
-                            <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-info btn-sm">View</a>
-                            <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <!-- buat delete nanti -->
+                            <div class="btn-group" role="group" aria-label="Patient Actions">
+                                <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-info btn-sm rounded mr-2">View</a>
+                                <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-primary btn-sm rounded mr-2">Edit</a>
+                                <form action="{{ route('patients.destroy', $patient->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

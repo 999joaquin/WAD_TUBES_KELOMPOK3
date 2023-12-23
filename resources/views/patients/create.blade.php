@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container mt-4">
         <h2>{{ isset($patient) ? 'Edit Patient' : 'Daftar Pasien' }}</h2>
         <form action="{{ isset($patient) ? route('patients.update', $patient->id) : route('patients.store') }}" method="POST">

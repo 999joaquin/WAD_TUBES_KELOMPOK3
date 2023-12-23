@@ -6,6 +6,6 @@
         <p>
         JAWIR 4 LYFE
         </p>
-        <!-- Include more content or sections as needed -->
+
     </div>
 @endsection

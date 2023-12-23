@@ -16,10 +16,11 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="{{ route('patients.index') }}">Patients</a>
                 </li>
                 <li class="nav-item">
@@ -35,9 +36,12 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
+=======
+                    <a class="nav-link" href="{{ route('patients.create') }}">Daftar</a>
+>>>>>>> 5e32e109d8736cc0b71946158cbb26b5385d114a
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <a class="nav-link" href="{{ route('patients.index') }}">Patients</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
