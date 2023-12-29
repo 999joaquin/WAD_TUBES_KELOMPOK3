@@ -30,7 +30,7 @@ class PatientController extends Controller
             'address' => 'nullable|string',
             // tambahin attribut lain kalo mau
         ]);
-    
+
         $patient = new Patient();
         $patient->name = $validatedData['name'];
         $patient->email = $validatedData['email'];
@@ -38,7 +38,7 @@ class PatientController extends Controller
         $patient->address = $validatedData['address'];
         // tambahin attribut lain kalo mau
         $patient->save();
-    
+
         return redirect()->route('patients.index')->with('success', 'Patient created successfully.');
     }
     // Buat nunjukkin pasien tertentu

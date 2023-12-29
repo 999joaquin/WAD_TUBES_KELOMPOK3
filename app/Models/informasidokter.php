@@ -5,7 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class informasi extends Model
+class informasidokter extends Model
 {
-    use HasFactory;
+    // identifikasi tabel pada database
+    public $table = "informasidokter";
+    protected $primaryKey = 'idDokter';
+
+    protected $fillable = [
+        'idDokter',
+        'foto',
+        'nama',
+        'spesialis',
+        'riwayatpendidikan',
+        'penghargaan'
+    ];
+
+
+    Use HasFactory;
+
 }

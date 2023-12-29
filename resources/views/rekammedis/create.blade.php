@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@sections(content')
+@sections('content')
 
 @include('rekammedis.index')
 
